@@ -87,7 +87,7 @@ public class EntityEnemyGuard : EntityEnemy
                 EntityPlayer caughtPlayer = _CheckCanCatchPlayer();
                 if (caughtPlayer)
                 {
-                    caughtPlayer.isDead = true; // temp
+                    //caughtPlayer.isDead = true; // temp
                     afterActionHasDone = true;
                     break;
                 }

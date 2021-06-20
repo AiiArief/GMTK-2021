@@ -13,6 +13,8 @@ public class Entity : MonoBehaviour
     [SerializeField] CollisionEntityChecker m_collisionEntityChecker;
     public CollisionEntityChecker collisionEntityChecker { get { return m_collisionEntityChecker; } }
 
+    public int deadTurnLeft = 0;
+
     public virtual void SetupWaitInput()
     {
         storedActions.Clear();
@@ -47,6 +49,16 @@ public class Entity : MonoBehaviour
     public virtual void AfterInput()
     {
         afterActionHasDone = true;
+    }
+
+    public virtual void DeadOrRevive(bool isDead)
+    {
+        deadTurnLeft = (isDead) ? 12 : 0;
+        if(characterController) characterController.enabled = !isDead;
+        transform.GetChild(0).gameObject.SetActive(!isDead);
+
+        storedActions.Clear();
+        storedActions.Add(new StoredActionSkip());
     }
 
     protected virtual void Awake()

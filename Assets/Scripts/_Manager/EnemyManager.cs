@@ -107,7 +107,11 @@ public class EnemyManager : MonoBehaviour
         foreach (Transform child in transform)
         {
             EntityEnemy enemy = child.GetComponent<EntityEnemy>();
-            if (enemy) enemies.Add(enemy);
+            if (enemy)
+            {
+                enemies.Add(enemy);
+                enemy.DeadOrRevive(true);
+            }
         }
     }
 }

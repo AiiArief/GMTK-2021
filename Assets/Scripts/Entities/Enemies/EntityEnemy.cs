@@ -25,7 +25,14 @@ public class EntityEnemy : Entity
 
     public override void WaitInput()
     {
-        _DoPatrol();
+        if(deadTurnLeft == 0)
+        {
+            _DoPatrol();
+        }
+        else
+        {
+            storedActions.Add(new StoredActionSkip());
+        }
     }
 
     public override void AfterInput()
@@ -33,7 +40,7 @@ public class EntityEnemy : Entity
         afterActionHasDone = true;
     }
 
-    protected int m_skipTurnCount = 0;
+    [HideInInspector] protected int m_skipTurnCount = 0;
     public virtual void SkipTurnEntity(int turns = 1)
     {
         storedActions.Add(new StoredActionSkip());

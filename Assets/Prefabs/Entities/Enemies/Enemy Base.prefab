@@ -202,6 +202,8 @@ GameObject:
   - component: {fileID: 7677541826883560135}
   - component: {fileID: 6878845995532331818}
   - component: {fileID: 8036168540114806956}
+  - component: {fileID: 7460389785879330896}
+  - component: {fileID: 150079310424444889}
   m_Layer: 0
   m_Name: Enemy Base
   m_TagString: Untagged
@@ -267,6 +269,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 967323bfabaa346448c13dc4e329f2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7460389785879330896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731039037329624238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb88eb2046f421498cb655632bc0af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &150079310424444889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731039037329624238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf26c8b2d47e7649b70c95485d5ce98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2389381917654889130

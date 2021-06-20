@@ -110,11 +110,11 @@ public class LevelManager : MonoBehaviour
 
     public void SetupLevelPathfindingOnLevelStart()
     {
-        Vector2 gridSize = new Vector2((int)m_baseFloorPathfinding.localScale.x, (int)m_baseFloorPathfinding.localScale.z);
-        Vector3 gridStartPos = new Vector3(m_baseFloorPathfinding.position.x - gridSize.x / 2, 0.0f, m_baseFloorPathfinding.position.z - gridSize.y / 2);
-        LevelGrid grid = new LevelGrid((int)gridSize.x, (int)gridSize.y, gridStartPos);
+        //Vector2 gridSize = new Vector2((int)m_baseFloorPathfinding.localScale.x, (int)m_baseFloorPathfinding.localScale.z);
+        //Vector3 gridStartPos = new Vector3(m_baseFloorPathfinding.position.x - gridSize.x / 2, 0.0f, m_baseFloorPathfinding.position.z - gridSize.y / 2);
+        //LevelGrid grid = new LevelGrid((int)gridSize.x, (int)gridSize.y, gridStartPos);
         //pathfinding = new Pathfinding(grid);
-        pathfinding = new Pathfinding(new LevelGrid(44, 44, new Vector3(-22, 0, -22)));
+        //pathfinding = new Pathfinding(new LevelGrid(44, 44, new Vector3(-22, 0, -22)));
     }
 
     private void Awake()

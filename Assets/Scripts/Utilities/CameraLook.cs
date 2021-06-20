@@ -6,8 +6,7 @@ public class CameraLook : MonoBehaviour
 {
     private EntityPlayer m_player;
 
-    private Vector3 m_currentCameraRot;
-    public Vector3 currentCameraRot { get { return m_currentCameraRot; } }
+    public Vector3 currentCameraRot;
 
     public Camera playerCamera { get { return transform.GetComponentInChildren<Camera>(); } }
 
@@ -19,7 +18,7 @@ public class CameraLook : MonoBehaviour
 
     private void Update()
     {
-        if (!m_player)
+        if (!m_player || m_player.deadTurnLeft > 0)
             return; 
 
         float moveH = Input.GetAxisRaw("Horizontal" + " #" + m_player.playerId);
@@ -30,13 +29,14 @@ public class CameraLook : MonoBehaviour
         bool camMod = Input.GetButton("Camera Modifier 1" + " #" + m_player.playerId) || Input.GetButton("Camera Modifier 2" + " #" + m_player.playerId);
 
         Vector2 camRot = (camMod) ? new Vector2(moveH, moveV) : new Vector2(camH, camV);
-        _HandleCameraWaitInput(camRot.x, camRot.y, moveMod);
+        _HandleCameraInput(camRot.x, camRot.y, moveMod);
     }
-    private void _HandleCameraWaitInput(float camH, float camV, bool moveMod)
-    {
-        m_currentCameraRot.y = Mathf.Repeat(m_currentCameraRot.y + camH, 360);
-        m_currentCameraRot.x = Mathf.Clamp(m_currentCameraRot.x - camV, -60.0f, 90.0f);
 
-        transform.rotation = Quaternion.Euler(m_currentCameraRot.x, m_currentCameraRot.y, 0.0f);
+    private void _HandleCameraInput(float camH, float camV, bool moveMod)
+    {
+        currentCameraRot.y = Mathf.Repeat(currentCameraRot.y + camH, 360);
+        currentCameraRot.x = Mathf.Clamp(currentCameraRot.x - camV, -60.0f, 90.0f);
+
+        transform.rotation = Quaternion.Euler(currentCameraRot.x, currentCameraRot.y, 0.0f);
     }
 }

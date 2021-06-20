@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CollisionCheckerChild : MonoBehaviour
 {
-    private HashSet<Collider> m_colliders = new HashSet<Collider>();
+    BoxCollider m_boxTriggerer;
+
+    public HashSet<Collider> m_colliders = new HashSet<Collider>();
     public HashSet<Collider> GetColliders() { return m_colliders; }
 
     public HashSet<T> GetCollidersWithFilter<T>()
@@ -34,11 +36,33 @@ public class CollisionCheckerChild : MonoBehaviour
         return false;
     }
 
+    private void Awake()
+    {
+        m_boxTriggerer = GetComponent<BoxCollider>();
+    }
+
+    private void LateUpdate()
+    {
+        //if(m_colliders.Count > 0)
+        //{
+        //    Collider[] colliders = new Collider[m_colliders.Count];
+        //    m_colliders.CopyTo(colliders);
+        //    for(int i=colliders.Length - 1; i>= 0; i--)
+        //    {
+        //        if (m_boxTriggerer.ClosestPoint(colliders[i].transform.position) != colliders[i].transform.position)
+        //            m_colliders.Remove(colliders[i]);
+        //    }
+
+        //    m_colliders = new HashSet<Collider>(colliders);
+        //}
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         m_colliders.Add(other);
     }
 
+    // this shit is buggy
     private void OnTriggerExit(Collider other)
     {
         m_colliders.Remove(other);

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,6 +9,20 @@ public class GameManager : MonoBehaviour
     PlayerManager m_playerManager;
     EnemyManager m_enemyManager;
     LevelManager m_levelManager;
+
+    [SerializeField] string nextLevelString;
+
+    public void Win()
+    {
+        UIManager.Instance.Transition(Color.white, nextLevelString);
+        m_phaseManager.SetPhase(PhaseEnum.None);
+    }
+
+    public void Lose()
+    {
+        UIManager.Instance.Transition(Color.black, UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        m_phaseManager.SetPhase(PhaseEnum.None);
+    }
 
     private void Awake()
     {
@@ -23,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+
         // set cutscene, config all manager, idk
         m_playerManager.SetupPlayersOnLevelStart(1); // temp
         m_enemyManager.SetupEnemiesOnLevelStart();
@@ -35,6 +49,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Restart"))
+            Lose();
+
         // kalo win atau apapun ya jangan update atuh
         if (m_phaseManager.currentPhase != PhaseEnum.None)
             m_phaseManager.UpdateCurrentPhase();

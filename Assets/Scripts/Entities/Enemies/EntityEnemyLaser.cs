@@ -44,6 +44,7 @@ public class EntityEnemyLaser : EntityEnemy
             m_laserLine.SetPosition(1, new Vector3(closestEntity.transform.position.x, m_laserLineDefaultEndPos.y, closestEntity.transform.position.z));
             if (closestEntity && closestEntity.GetComponent<TagEntityLaserTriggerable>())
             {
+                // kasih state ke yang kena
                 patrolState = PatrolStateEnum.Alert;
             }
         }
